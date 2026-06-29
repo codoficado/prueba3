@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Annotation profile for Anfri (proyecto raiz)" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
+        </processorPath>
+        <module name="Pedidos" />
+        <module name="Envios" />
+        <module name="Clientes" />
+        <module name="InventarioF" />
+        <module name="InventarioV" />
+        <module name="Resenas" />
+        <module name="Notificaciones" />
+        <module name="Pagos" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Clientes" options="-parameters" />
+      <module name="Envios" options="-parameters" />
+      <module name="InventarioF" options="-parameters" />
+      <module name="InventarioV" options="-parameters" />
+      <module name="Notificaciones" options="-parameters" />
+      <module name="Pagos" options="-parameters" />
+      <module name="Pedidos" options="-parameters" />
+      <module name="Resenas" options="-parameters" />
+    </option>
+  </component>
+</project>
