@@ -1,0 +1,14 @@
+server:
+  port: 8088
+
+spring:
+  application:
+    name: promociones-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/db_anfri_promociones
+    username: root
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
