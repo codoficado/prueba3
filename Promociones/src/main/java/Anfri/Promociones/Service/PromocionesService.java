@@ -26,7 +26,7 @@ public class PromocionesService {
     }
 
     public PromocionesModel guardarPromocion(PromocionesModel promocion) {
-        promocion.setActivo(true); // Se guarda activa por defecto
+        promocion.setActivo(true);
         return promocionesRepository.save(promocion);
     }
 }

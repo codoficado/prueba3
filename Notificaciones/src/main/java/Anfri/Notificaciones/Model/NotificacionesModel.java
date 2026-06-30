@@ -14,7 +14,7 @@ public class NotificacionesModel {
 
     private Integer clienteId;
     private String mensaje;
-    private String tipo; // Ej: EMAIL, SMS, PUSH
-    private String estado; // Ej: ENVIADO, PENDIENTE
+    private String tipo;
+    private String estado;
     private LocalDateTime fechaEnvio;
 }

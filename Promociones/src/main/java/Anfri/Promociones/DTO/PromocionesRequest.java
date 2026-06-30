@@ -9,7 +9,7 @@ public class PromocionesRequest {
     private Double descuentoPorcentaje;
     private LocalDateTime fechaFin;
 
-    // --- GETTERS Y SETTERS ---
+
     public String getCodigo() { return codigo; }
     public void setCodigo(String codigo) { this.codigo = codigo; }
 

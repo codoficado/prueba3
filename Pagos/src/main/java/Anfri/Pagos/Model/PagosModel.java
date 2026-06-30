@@ -2,13 +2,18 @@ package Anfri.Pagos.Model;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDateTime;
 
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "pagos")
-public class PagosModel { // Se llama PagosModel para coincidir con tu Controller y Repository
+public class PagosModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -11,5 +11,9 @@
     <file url="file://$PROJECT_DIR$/Promociones/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Repartidores/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Resenas/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/api-gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/api-gateway/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka-server/src/main/resources" charset="UTF-8" />
   </component>
 </project>

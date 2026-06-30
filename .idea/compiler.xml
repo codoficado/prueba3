@@ -3,11 +3,29 @@
   <component name="CompilerConfiguration">
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="eureka-server" />
+        <module name="api-gateway (1)" />
+      </profile>
+      <profile name="Annotation profile for Repartidores" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
+        </processorPath>
+        <module name="Promociones" />
+        <module name="Repartidores" />
+      </profile>
       <profile name="Annotation profile for Anfri (proyecto raiz)" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
         </processorPath>
         <module name="Pedidos" />
@@ -16,24 +34,12 @@
         <module name="InventarioF" />
         <module name="InventarioV" />
         <module name="Resenas" />
-        <module name="Pagos" />
-      </profile>
-      <profile name="Annotation profile for Notificaciones" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
-        </processorPath>
         <module name="Notificaciones" />
+        <module name="Pagos" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="api-gateway" target="21" />
-      <module name="eureka-server" target="21" />
-      <module name="Promociones" target="21" />
-      <module name="Repartidores" target="21" />
+      <module name="anfri-parent" target="1.5" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -45,6 +51,8 @@
       <module name="Notificaciones" options="-parameters" />
       <module name="Pagos" options="-parameters" />
       <module name="Pedidos" options="-parameters" />
+      <module name="Promociones" options="-parameters" />
+      <module name="Repartidores" options="-parameters" />
       <module name="Resenas" options="-parameters" />
     </option>
   </component>

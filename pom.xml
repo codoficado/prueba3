@@ -20,6 +20,8 @@
         <module>Pagos</module>
         <module>Pedidos</module>
         <module>Resenas</module>
+        <module>api-gateway</module>
+        <module>eureka-server</module>
     </modules>
 
 </project>
