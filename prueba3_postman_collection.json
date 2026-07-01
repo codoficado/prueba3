@@ -1078,7 +1078,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{gateway_url}}/api/promociones",
+							"raw": "{{gateway_url}}/api/v1/promociones",
 							"host": [
 								"{{gateway_url}}"
 							],
