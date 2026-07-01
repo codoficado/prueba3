@@ -2,7 +2,7 @@ package Anfri.Repartidores;
 
 import Anfri.Repartidores.DTO.RepartidorRequest;
 import Anfri.Repartidores.Model.RepartidorModel;
-import Anfri.Repartidores.Repository.RepartidoresRepository; // Corregido: ¡En plural!
+import Anfri.Repartidores.Repository.RepartidoresRepository; 
 import Anfri.Repartidores.Service.RepartidoresService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,7 +19,7 @@ import static org.mockito.Mockito.*;
 class RepartidoresServiceTest {
 
     @Mock
-    private RepartidoresRepository repartidoresRepository; // Corregido: ¡En plural!
+    private RepartidoresRepository repartidoresRepository;
 
     @InjectMocks
     private RepartidoresService repartidoresService;
