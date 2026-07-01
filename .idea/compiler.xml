@@ -10,31 +10,22 @@
         <module name="eureka-server" />
         <module name="api-gateway (1)" />
       </profile>
-      <profile name="Annotation profile for Repartidores" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
-        </processorPath>
-        <module name="Promociones" />
-        <module name="Repartidores" />
-      </profile>
       <profile name="Annotation profile for Anfri (proyecto raiz)" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
         </processorPath>
         <module name="Pedidos" />
         <module name="Envios" />
+        <module name="Promociones" />
         <module name="Clientes" />
         <module name="InventarioF" />
         <module name="InventarioV" />
         <module name="Resenas" />
         <module name="Notificaciones" />
+        <module name="Repartidores" />
         <module name="Pagos" />
       </profile>
     </annotationProcessing>
@@ -54,6 +45,8 @@
       <module name="Promociones" options="-parameters" />
       <module name="Repartidores" options="-parameters" />
       <module name="Resenas" options="-parameters" />
+      <module name="api-gateway (1)" options="-parameters" />
+      <module name="eureka-server" options="-parameters" />
     </option>
   </component>
 </project>
