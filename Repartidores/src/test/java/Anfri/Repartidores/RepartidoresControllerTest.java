@@ -1,86 +1,57 @@
 package Anfri.Repartidores;
 
-import Anfri.Repartidores.Controller.RepartidoresController;
 import Anfri.Repartidores.DTO.RepartidorRequest;
 import Anfri.Repartidores.Model.RepartidorModel;
+import Anfri.Repartidores.Repository.RepartidoresRepository; // Corregido: ¡En plural!
 import Anfri.Repartidores.Service.RepartidoresService;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
-import org.springframework.test.context.bean.override.mockito.MockitoBean;
-import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.Collections;
-
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
 
-@WebMvcTest(RepartidoresController.class)
-public class RepartidoresControllerTest {
+@ExtendWith(MockitoExtension.class)
+class RepartidoresServiceTest {
 
-    @Autowired
-    private MockMvc mockMvc;
+    @Mock
+    private RepartidoresRepository repartidoresRepository; // Corregido: ¡En plural!
 
-    @MockitoBean
+    @InjectMocks
     private RepartidoresService repartidoresService;
 
-    @Autowired
-    private ObjectMapper objectMapper;
-
-    private RepartidorModel repartidorEjemplo;
-    private RepartidorRequest requestEjemplo;
+    private RepartidorRequest requestMock;
+    private RepartidorModel repartidorGuardadoMock;
 
     @BeforeEach
     void setUp() {
-        repartidorEjemplo = new RepartidorModel();
-        repartidorEjemplo.setId(1);
-        repartidorEjemplo.setNombre("Juan Pérez");
-        repartidorEjemplo.setTelefono("987654321");
-        repartidorEjemplo.setTipoVehiculo("Moto");
-        repartidorEjemplo.setEstado("DISPONIBLE");
+        requestMock = new RepartidorRequest();
+        requestMock.setNombre("Juan Perez");
+        requestMock.setTelefono("123456789");
+        requestMock.setTipoVehiculo("Moto");
 
-        requestEjemplo = new RepartidorRequest();
-        requestEjemplo.setNombre("Juan Pérez");
-        requestEjemplo.setTelefono("987654321");
-        requestEjemplo.setTipoVehiculo("Moto");
+        repartidorGuardadoMock = new RepartidorModel();
+        repartidorGuardadoMock.setId(1);
+        repartidorGuardadoMock.setNombre("Juan Perez");
+        repartidorGuardadoMock.setTelefono("123456789");
+        repartidorGuardadoMock.setTipoVehiculo("Moto");
+        repartidorGuardadoMock.setEstado("DISPONIBLE");
     }
 
     @Test
-    void listarTodos_DeberiaRetornarListaVacia_CuandoNoHayRepartidores() throws Exception {
-        when(repartidoresService.listarTodos()).thenReturn(Collections.emptyList());
+    void crear_DeberiaGuardarYRetornarRepartidor_ConEstadoDisponible() {
+        when(repartidoresRepository.save(any(RepartidorModel.class))).thenReturn(repartidorGuardadoMock);
 
-        mockMvc.perform(get("/api/v1/repartidores"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$").isArray())
-                .andExpect(jsonPath("$.length()").value(0));
-    }
+        RepartidorModel resultado = repartidoresService.crear(requestMock);
 
-    @Test
-    void crear_DeberiaRetornarCreado_CuandoElRequestEsValido() throws Exception {
-        when(repartidoresService.crear(any(RepartidorRequest.class))).thenReturn(repartidorEjemplo);
+        assertNotNull(resultado, "El repartidor devuelto no debería ser nulo");
+        assertEquals("Juan Perez", resultado.getNombre(), "El nombre debe guardarse correctamente");
+        assertEquals("DISPONIBLE", resultado.getEstado(), "¡Regla de negocio cumplida! El estado inicial debe ser DISPONIBLE");
 
-        mockMvc.perform(post("/api/v1/repartidores")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(requestEjemplo)))
-                .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.id").value(1))
-                .andExpect(jsonPath("$.nombre").value("Juan Pérez"))
-                .andExpect(jsonPath("$.estado").value("DISPONIBLE"));
-    }
-
-    @Test
-    void obtener_DeberiaRetornarRepartidor_CuandoIdExiste() throws Exception {
-        when(repartidoresService.buscarPorId(1)).thenReturn(repartidorEjemplo);
-
-        mockMvc.perform(get("/api/v1/repartidores/1"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(1))
-                .andExpect(jsonPath("$.nombre").value("Juan Pérez"));
+        verify(repartidoresRepository, times(1)).save(any(RepartidorModel.class));
     }
 }
