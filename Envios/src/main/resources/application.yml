@@ -22,3 +22,10 @@ spring:
 
 pedido-service:
   url: http://localhost:8086/api/v1/pedidos  # ¡BUG CORREGIDO! Ahora apunta con éxito a Pedidos
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka/}
+  instance:
+    prefer-ip-address: true

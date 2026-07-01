@@ -9,5 +9,5 @@ RUN --mount=type=cache,target=/root/.m2 mvn -B -q clean package -DskipTests
 FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 COPY --from=build /build/target/*.jar app.jar
-EXPOSE 8090
+EXPOSE 8088
 ENTRYPOINT ["java", "-jar", "app.jar"]
